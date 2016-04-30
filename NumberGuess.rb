@@ -35,7 +35,9 @@ class Game
 	end
 
 	def generate_number
-		return randomNo = 1 + rand(100)
+        # increaset to 1000
+		return randomNo = 1 + rand(1000)
+		#return randomNo = 1 + rand(100)
 	end
 
 	def play_game
