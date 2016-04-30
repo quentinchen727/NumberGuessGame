@@ -48,7 +48,7 @@ class Game
 		loop do
 
             # limit maximum number to guess
-            if local_guess == 1
+            if local_guess == 10
 				Console_Screen.cls
 				print "You have guess 10 times! You lost!"
 				Console_Screen.pause
@@ -64,6 +64,12 @@ class Game
 			#decide whether it is valid input
             Console_Screen.cls
             Console_Screen.pause
+            if reply == "cheat"
+                Console_Screen.cls
+                print "The secrect is #{number}\n"
+                Console_Screen.pause
+            end
+
             if not !!(/^(\d)+$/.match(reply))
 				Console_Screen.cls
                 print "Not a number! Please input a number between 1 to 1000\n"
