@@ -30,7 +30,7 @@ class Game
 		Console_Screen.cls
 		puts "Instruction:\n\n"
 
-		puts "This game randomly generates a number from 1 to 100 and "
+		puts "This game randomly generates a number from 1 to 1000 and "
 		puts "challaenges you to identify it in as few guesses and possible "
 	end
 
@@ -39,7 +39,7 @@ class Game
 		return randomNo = 1 + rand(1000)
 		#return randomNo = 1 + rand(100)
 	end
-
+    
 	def play_game
 		number = generate_number
 
@@ -49,9 +49,25 @@ class Game
 
 			reply = STDIN.gets
 			reply.chop!
-			reply = reply.to_i
 
-			if reply < 1 or reply > 100 then
+			#decide whether it is valid input
+            Console_Screen.cls
+            Console_Screen.pause
+            if not !!(/^(\d)+$/.match(reply))
+				Console_Screen.cls
+                print "Not a number! Please input a number between 1 to 1000\n"
+				Console_Screen.pause
+                next
+            elsif reply.to_i < 1 or reply.to_i > 1000
+				Console_Screen.cls
+                print "number should be between 1 and 1000! Please input a number between 1 to 1000\n"
+				Console_Screen.pause
+                next
+            end
+
+            reply = reply.to_i
+
+			if reply < 1 or reply > 1000 then
 				redo # redo the ciurrent iteration of the loop
 			end
 
