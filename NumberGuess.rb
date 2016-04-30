@@ -43,7 +43,18 @@ class Game
 	def play_game
 		number = generate_number
 
+        local_guess = 0
+
 		loop do
+
+            # limit maximum number to guess
+            if local_guess == 1
+				Console_Screen.cls
+				print "You have guess 10 times! You lost!"
+				Console_Screen.pause
+                break
+            end
+
 			Console_Screen.cls
 			print "\nEnter your guess and press the enter key: "
 
@@ -73,6 +84,7 @@ class Game
 
             $total_guess_number += 1
 
+
 			if reply == number then
                 # increment the number of right
                 $noRight += 1
@@ -82,10 +94,12 @@ class Game
 				break
 			elsif reply < number then
 				Console_Screen.cls
+                local_guess += 1
 				print "Your guess is too low! Press enter to continue."
 				Console_Screen.pause
 			elsif reply > number then
 				Console_Screen.cls
+                local_guess += 1
 				print "Your guess is too high! Press enter to continue."
 				Console_Screen.pause
 			end
