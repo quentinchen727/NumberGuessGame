@@ -53,7 +53,11 @@ class Game
 				redo # redo the ciurrent iteration of the loop
 			end
 
+            $total_guess_number += 1
+
 			if reply == number then
+                # increment the number of right
+                $noRight += 1
 				Console_Screen.cls
 				print "You have guessed the number! Press Enter to continue."
 				Console_Screen.pause
@@ -78,6 +82,9 @@ class Game
 	end
 
 	$noRight = 0
+    # define $total_guess_number
+    $total_guess_number = 0
+    $game_number = 0
 
 	Console_Screen = Screen.new
 
@@ -110,10 +117,14 @@ class Game
 
 		loop do
 			SQ.play_game
+            $game_number += 1
 
 			Console_Screen.cls
 
 			print "Would you like to play again? (y/n): "
+            print "Your total guess of games is #{$total_guess_number}\n"
+            print "Your total played game is #{$game_number}\n"
+            print "Your average is #{$total_guess_number/$game_number}\n"
 
 			playAgain = STDIN.gets
 			playAgain.chop!
